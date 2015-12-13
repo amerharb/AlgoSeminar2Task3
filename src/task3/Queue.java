@@ -7,27 +7,27 @@ public class Queue<E>
 
     private Stack<E> inbox = new Stack<E>();
     private Stack<E> outbox = new Stack<E>();
-    private int size = 0;
     
     public void queue(E item)
     {
         inbox.push(item);
-        size++;
     }
 
-    public E dequeue()
+    public E dequeue() throws Exception
     {
+        if (size() <= 0){
+            throw new Exception("under flow");
+        }
         if (outbox.isEmpty()) {
             while (!inbox.isEmpty()) {
                 outbox.push(inbox.pop());
             }
         }
-        size--;
         return outbox.pop();
     }
     
     public int size(){
-        return size;
+        return inbox.size() + outbox.size();
     }
 
     public E peek()
