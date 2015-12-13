@@ -22,9 +22,17 @@ public class Task3
             if (ans.toLowerCase().contains("exit")) {
                 break;
             } else if (ans.toLowerCase().contains("dq")) {
-                System.out.println(q.dequeue());
+                try {
+                    System.out.println(q.dequeue());
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             } else {
-                q.queue(ans);
+                try {
+                    q.queue(ans);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
 
         }
