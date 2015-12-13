@@ -23,4 +23,14 @@ public class Queue<E>
         return outbox.pop();
     }
 
+    public E peek()
+    {
+        if (outbox.isEmpty()) {
+            while (!inbox.isEmpty()) {
+                outbox.push(inbox.pop());
+            }
+        }
+        return outbox.peek();
+    }
+
 }
